@@ -594,9 +594,9 @@ class Agent:
         bx = float(ball_x[0])
         by = float(ball_y[0])
         p = self.p
-        x = float(p.x)
-        y = float(p.y)
-        r = float(p.r)
+        x = float(p.x[0])
+        y = float(p.y[0])
+        r = float(p.r[0])
         direction = int(p.direction)
 
         angle = math.pi * 60 / 180
