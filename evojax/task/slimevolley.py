@@ -591,8 +591,8 @@ class Agent:
         return getObsArray(self.state)
 
     def display(self, canvas, ball_x, ball_y):
-        bx = float(ball_x)
-        by = float(ball_y)
+        bx = float(ball_x[0])
+        by = float(ball_y[0])
         p = self.p
         x = float(p.x)
         y = float(p.y)
