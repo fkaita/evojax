@@ -335,8 +335,13 @@ class Particle:
         self.c = c
 
     def display(self, canvas):
-        return circle(canvas, toX(float(self.p.x)), toY(float(self.p.y)),
-                      toP(float(self.p.r)), color=self.c)
+        # return circle(canvas, toX(float(self.p.x)), toY(float(self.p.y)),
+        #               toP(float(self.p.r)), color=self.c)
+        x = float(self.p.x.item()) if hasattr(self.p.x, "item") else float(self.p.x)
+        y = float(self.p.y.item()) if hasattr(self.p.y, "item") else float(self.p.y)
+        r = float(self.p.r.item()) if hasattr(self.p.r, "item") else float(self.p.r)
+
+        return circle(canvas, toX(x), toY(y), toP(r), color=self.c)
 
     def move(self):
         self.p = ParticleState(self.p.x+self.p.vx*TIMESTEP,
