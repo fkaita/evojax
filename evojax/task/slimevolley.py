@@ -591,13 +591,21 @@ class Agent:
         return getObsArray(self.state)
 
     def display(self, canvas, ball_x, ball_y):
-        bx = float(ball_x)
-        by = float(ball_y)
+        # bx = float(ball_x)
+        # by = float(ball_y)
+        # p = self.p
+        # x = float(p.x)
+        # y = float(p.y)
+        # r = float(p.r)
+        # direction = int(p.direction)
+
+        bx = float(ball_x.item() if hasattr(ball_x, "item") else ball_x)
+        by = float(ball_y.item() if hasattr(ball_y, "item") else ball_y)
         p = self.p
-        x = float(p.x)
-        y = float(p.y)
-        r = float(p.r)
-        direction = int(p.direction)
+        x = float(p.x.item() if hasattr(p.x, "item") else p.x)
+        y = float(p.y.item() if hasattr(p.y, "item") else p.y)
+        r = float(p.r.item() if hasattr(p.r, "item") else p.r)
+        direction = int(p.direction.item() if hasattr(p.direction, "item") else p.direction)
 
         angle = math.pi * 60 / 180
         if direction == 1:
@@ -613,7 +621,7 @@ class Agent:
         ballX = bx-(x+(0.6)*r*c)
         ballY = by-(y+(0.6)*r*s)
 
-        dist = math.sqrt(ballX*ballX+ballY*ballY)
+        dist = math.sqrt(ballX*ballX+ballY*ballY) if (ballX != 0 or ballY != 0) else 1.0
         eyeX = ballX/dist
         eyeY = ballY/dist
 
@@ -624,7 +632,8 @@ class Agent:
                         color=(0, 0, 0))
 
         # draw coins (lives) left
-        num_lives = int(p.life)
+        # num_lives = int(p.life)
+        num_lives = int(p.life.item() if hasattr(p.life, "item") else p.life)
         for i in range(1, num_lives):
             canvas = circle(canvas, toX(direction*(REF_W/2+0.5-i*2.)),
                             WINDOW_HEIGHT-toY(1.5), toP(0.5),
