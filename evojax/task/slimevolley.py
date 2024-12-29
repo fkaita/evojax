@@ -624,7 +624,7 @@ class Agent:
                         color=(0, 0, 0))
 
         # draw coins (lives) left
-        num_lives = int(p.life)
+        num_lives = int(p.life[0])
         for i in range(1, num_lives):
             canvas = circle(canvas, toX(direction*(REF_W/2+0.5-i*2.)),
                             WINDOW_HEIGHT-toY(1.5), toP(0.5),
