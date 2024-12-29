@@ -597,7 +597,7 @@ class Agent:
         x = float(p.x[0])
         y = float(p.y[0])
         r = float(p.r[0])
-        direction = int(p.direction)
+        direction = int(p.direction[0])
 
         angle = math.pi * 60 / 180
         if direction == 1:
