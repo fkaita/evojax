@@ -332,10 +332,10 @@ class Particle:
     """ used for the ball, and also for the round stub above the fence """
     def __init__(self, p: ParticleState, c):
         self.p = p
-        self.p.x = float(p.x.item()) if hasattr(p.x, "item") else float(p.x)
-        self.p.y = float(p.y.item()) if hasattr(p.y, "item") else float(p.y)
-        self.p.r = float(p.r.item()) if hasattr(p.r, "item") else float(p.r)
-        self.p.direction = float(p.y.item()) if hasattr(p.y, "item") else float(p.direction)
+        self.p.x = p.x[0]
+        self.p.y = p.y[0]
+        self.p.r = p.r[0]
+        self.p.direction = p.direction[0]
         self.c = c
 
     def display(self, canvas):
