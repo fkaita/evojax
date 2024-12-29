@@ -485,10 +485,6 @@ class Agent:
     """ keeps track of the agent in the game. note: not the policy network """
     def __init__(self, agent, c):
         self.p = agent
-        self.p.x = self.p.x[0]
-        self.p.y = self.p.y[0]
-        self.p.r = self.p.r[0]
-        self.p.direction = self.p.direction[0]
         self.state = getZeroObs()
         self.c = c
 
@@ -595,8 +591,8 @@ class Agent:
         return getObsArray(self.state)
 
     def display(self, canvas, ball_x, ball_y):
-        bx = float(ball_x[0])
-        by = float(ball_y[0])
+        bx = float(ball_x)
+        by = float(ball_y)
         p = self.p
         x = float(p.x)
         y = float(p.y)
@@ -628,7 +624,7 @@ class Agent:
                         color=(0, 0, 0))
 
         # draw coins (lives) left
-        num_lives = int(p.life[0])
+        num_lives = int(p.life)
         for i in range(1, num_lives):
             canvas = circle(canvas, toX(direction*(REF_W/2+0.5-i*2.)),
                             WINDOW_HEIGHT-toY(1.5), toP(0.5),
