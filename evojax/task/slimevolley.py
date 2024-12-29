@@ -332,10 +332,6 @@ class Particle:
     """ used for the ball, and also for the round stub above the fence """
     def __init__(self, p: ParticleState, c):
         self.p = p
-        self.p.x = p.x[0]
-        self.p.y = p.y[0]
-        self.p.r = p.r[0]
-        self.p.direction = p.direction[0]
         self.c = c
 
     def display(self, canvas):
@@ -489,6 +485,10 @@ class Agent:
     """ keeps track of the agent in the game. note: not the policy network """
     def __init__(self, agent, c):
         self.p = agent
+        self.p.x = self.p.x[0]
+        self.p.y = self.p.y[0]
+        self.p.r = self.p.r[0]
+        self.p.direction = self.p.direction[0]
         self.state = getZeroObs()
         self.c = c
 
