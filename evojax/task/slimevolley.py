@@ -332,6 +332,10 @@ class Particle:
     """ used for the ball, and also for the round stub above the fence """
     def __init__(self, p: ParticleState, c):
         self.p = p
+        self.p.x = float(p.x.item()) if hasattr(p.x, "item") else float(p.x)
+        self.p.y = float(p.y.item()) if hasattr(p.y, "item") else float(p.y)
+        self.p.r = float(p.r.item()) if hasattr(p.r, "item") else float(p.r)
+        self.p.direction = float(p.y.item()) if hasattr(p.y, "item") else float(p.direction)
         self.c = c
 
     def display(self, canvas):
@@ -594,10 +598,10 @@ class Agent:
         bx = float(ball_x[0])
         by = float(ball_y[0])
         p = self.p
-        x = float(p.x[0])
-        y = float(p.y[0])
-        r = float(p.r[0])
-        direction = int(p.direction[0])
+        x = float(p.x)
+        y = float(p.y)
+        r = float(p.r)
+        direction = int(p.direction)
 
         angle = math.pi * 60 / 180
         if direction == 1:
